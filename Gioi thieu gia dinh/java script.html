@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Java script</title>
+<script>
+function Nhan()
+{
+ var a=document.getElementById("txtA").value;
+ var b=document.getElementById("txtB").value;
+ document.getElementById("txtKQ").value=a*b;
+}
+
+function Tru()
+{
+ var c=document.getElementById("txtC").value;
+ var d=document.getElementById("txtD").value;
+ document.getElementById("txtKQTRU").value=c-d;
+}
+
+function Cong()
+{
+    var e= parseFloat(document.getElementById("txtE").value);
+    var g= parseFloat(document.getElementById("txtG").value);
+ document.getElementById("txtKQCONG").value=e+g;
+}
+
+function Chia()
+{
+ var h=document.getElementById("txtH").value;
+ var i=document.getElementById("txtI").value;
+ document.getElementById("txtKQCHIA").value=h/i;
+}
+
+function giaiPhuongTrinh() {
+            // Lấy giá trị của a và b từ ô nhập liệu
+            var a = parseFloat(document.getElementById("heSoA").value);
+            var b = parseFloat(document.getElementById("heSoB").value);
+            
+            // Kiểm tra nếu a bằng 0
+            if (a === 0) {
+                if (b === 0) {
+                    document.getElementById("ketQua").innerText = "Phương trình vô số nghiệm";
+                } else {
+                    document.getElementById("ketQua").innerText = "Phương trình vô nghiệm";
+                }
+            } else {
+                // Tính nghiệm x
+                var x = -b / a;
+                document.getElementById("ketQua").innerText = "Nghiệm của phương trình là: x = " + x;
+            }
+        }
+
+
+
+        function tinhSoNgay() {
+            const thang = parseInt(document.getElementById("thang").value);
+            const nam = parseInt(document.getElementById("nam").value);
+            let soNgay;
+
+            // Kiểm tra tháng hợp lệ
+            if (thang < 1 || thang > 12) {
+                document.getElementById("ketQua").innerText = "Tháng không hợp lệ! Vui lòng nhập tháng từ 1 đến 12.";
+                return;
+            }
+
+            // Tính số ngày trong tháng
+            if (thang === 2) {
+                // Kiểm tra năm nhuận
+                if ((nam % 4 === 0 && nam % 100 !== 0) || (nam % 400 === 0)) {
+                    soNgay = 29; // Năm nhuận
+                } else {
+                    soNgay = 28; // Năm không nhuận
+                }
+            } else {
+                // Số ngày của các tháng còn lại
+                const thang31 = [1, 3, 5, 7, 8, 10, 12];
+                soNgay = thang31.includes(thang) ? 31 : 30;
+            }
+
+            // Hiển thị kết quả
+            document.getElementById("ketQuaNgay").innerText = `Tháng ${thang} năm ${nam} có ${soNgay} ngày.`;
+        }
+
+
+</script>
+</head>
+<body>
+
+<p>Java script</p>
+<h1>Tác dụng: làm trang web linh hoạt + có tương tác</h1>
+<h2>Các phép toán cơ bản</h2>
+<p>Phép nhân: <input type="text" id="txtA" name="T2" size="13">&nbsp; x&nbsp; 
+<input type="text" id="txtB" name="T3" size="14">&nbsp;
+<input type="button" value=" = " onclick="Nhan()" >
+<input type="text" id="txtKQ" name="T6" size="16"> </p>
+
+<p>Phép trừ: <input type="text" id="txtC" name="T4" size="13">&nbsp; -&nbsp; 
+    <input type="text" id="txtD" name="T5" size="14">&nbsp;
+    <input type="button" value=" = " onclick="Tru()" >
+    <input type="text" id="txtKQTRU" name="T6" size="16"> </p> 
+
+    <p>Phép Cộng: <input type="text" id="txtE" name="T6" size="13">&nbsp; + &nbsp; 
+        <input type="text" id="txtG" name="T7" size="14">&nbsp;
+        <input type="button" value=" = " onclick="Cong()" >
+        <input type="text" id="txtKQCONG" name="T6" size="16"> </p>
+
+        <p>Phép Chia: <input type="text" id="txtH" name="T8" size="13">&nbsp; /&nbsp; 
+            <input type="text" id="txtI" name="T9" size="14">&nbsp;
+            <input type="button" value=" = " onclick="Chia()" >
+            <input type="text" id="txtKQCHIA" name="T6" size="16"> </p>
+
+
+
+
+            <h2>Giải phương trình bậc nhất: a.x + b = 0</h2>
+    
+    <label for="heSoA">Hệ số a:</label>
+    <input type="number" id="heSoA" placeholder="Nhập hệ số a"><br><br>
+    
+    <label for="heSoB">Hệ số b:</label>
+    <input type="number" id="heSoB" placeholder="Nhập hệ số b"><br><br>
+    
+    <button onclick="giaiPhuongTrinh()">Giải phương trình</button>
+    
+    <p id="ketQua">Kết quả giải phương trình bậc nhất : </p>
+
+
+
+    <h2>Tính Số Ngày Của Một Tháng</h2>
+    <label for="thang">Nhập tháng (1-12):</label>
+    <input type="number" id="thang" min="1" max="12" required>
+    <br>
+    <label for="nam">Nhập năm:</label>
+    <input type="number" id="nam" required>
+    <br>
+    <button onclick="tinhSoNgay()">Tính Số Ngày</button>
+    <p id="ketQuaNgay">Kết quả tính số ngày:</p>
+
+
+
+</body>
+</html>
